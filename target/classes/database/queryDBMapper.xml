@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="queryDBMapper">
+
+	<!-- 테이블 조회 -->
+	<select id = "selectList"  resultType ="com.board.member.MemberVO">
+		SELECT
+			no,
+			id,
+			name,
+			title,
+			contents,
+			date
+		FROM
+			member
+	</select>
+	
+	
+	<!-- 글 추가  -->
+	<insert id= "insertList" >
+		INSERT INTO member(
+			id,
+			name,
+			title,
+			contents,
+			date
+		)VALUES(
+			#{id},
+			#{name},
+			#{title},
+			#{contents},
+			now()
+		)
+	</insert>
+	
+	<!--  글 삭제 -->
+	<delete id= "deleteList">
+		DELETE FROM member
+		WHERE no = #{no}
+	</delete>
+	
+	<!--  글 수정 -->
+	<update id= "updateList">
+		UPDATE member SET
+			title = #{title},
+			contents = #{contents}
+		WHERE no = #{no}
+	</update>
+	
+	<!--  글 검색 -->
+	<select id = "searchList">
+	</select>
+
+</mapper>
